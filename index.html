@@ -1,233 +1,1128 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Phylum Coelenterata (Cnidaria) — Presentation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kumar Pokharel - Visionary Leader</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+    
     :root {
-      --bg: #001219;
-      --card: #001f29;
-      --accent: #ffb703;
-      --text: #edf6f9;
-      --muted: rgba(237, 246, 249, 0.75);
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #8b5cf6;
+      --accent: #06b6d4;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --glass: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-lg: 0 35px 60px -12px rgba(0, 0, 0, 0.35);
     }
-    html, body {
-      height: 100%;
+
+    * {
       margin: 0;
-      font-family: "Poppins", system-ui, sans-serif;
+      padding: 0;
+      box-sizing: border-box;
     }
+
     body {
-      background: radial-gradient(circle at top, #003440, var(--bg) 85%);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
       color: var(--text);
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--light);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--primary), var(--secondary));
+      border-radius: 10px;
+    }
+
+    /* Animated Background */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating Particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: float 20s infinite linear;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Glassmorphism Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      background: var(--glass);
+      border-bottom: 1px solid var(--glass-border);
+      transition: all 0.3s ease;
+    }
+
+    .header.scrolled {
+      background: rgba(15, 23, 42, 0.9);
+      box-shadow: var(--shadow);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+    }
+
+    .logo::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      transition: width 0.3s ease;
+    }
+
+    .logo:hover::after {
+      width: 100%;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover {
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .contact-btn {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .deck {
-      width: 100%;
-      max-width: 1100px;
-      height: 85vh;
+      text-align: center;
+      color: white;
       position: relative;
       overflow: hidden;
-      border-radius: 20px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
-      background: rgba(255, 255, 255, 0.03);
-      padding: 30px;
     }
-    .slide {
-      position: absolute;
-      inset: 0;
-      padding: 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      transform: translateX(120%);
-      opacity: 0;
-      transition: all 0.6s ease;
-    }
-    .slide.active {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    .slide.exit-left {
-      transform: translateX(-120%);
-      opacity: 0;
-    }
-    h1, h2 {
-      margin: 0;
-      font-weight: 600;
-      color: var(--accent);
-    }
-    h1 { font-size: 40px; }
-    h2 { font-size: 26px; }
-    p { margin: 0; font-size: 18px; line-height: 1.6; }
-    ul { margin: 0; padding-left: 1.4rem; font-size: 18px; line-height: 1.5; }
-    img {
-  max-width: 100%;
-  max-height: 400px;
-  object-fit: contain;
-  border-radius: 12px;
-  margin-top: 10px;
-  align-self: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-}
 
-    .controls {
-      position: absolute;
-      right: 18px;
-      top: 18px;
+    .hero-content {
+      max-width: 800px;
+      padding: 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.3s forwards;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.6s forwards;
+      background: linear-gradient(135deg, #fff, #e2e8f0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.9s forwards;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+    }
+
+    .typewriter {
+      overflow: hidden;
+      border-right: 3px solid var(--accent);
+      white-space: nowrap;
+      margin: 0 auto;
+      animation: typing 3s steps(40, end) 1.2s forwards, blink-caret 0.75s step-end infinite;
+      width: 0;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: var(--accent); }
+    }
+
+    .hero-buttons {
       display: flex;
-      gap: 10px;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeInUp 1s ease 1.2s forwards;
     }
-    button.icon {
-      background: rgba(255, 255, 255, 0.07);
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
       border: none;
-      color: var(--text);
-      padding: 8px 16px;
-      border-radius: 10px;
       cursor: pointer;
-      font-size: 15px;
-      transition: background 0.2s ease;
-      backdrop-filter: blur(6px);
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
     }
-    button.icon:hover {
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-3px);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Sections */
+    .section {
+      padding: 8rem 3rem;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Glass Cards */
+    .glass-section {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
+      margin: 6rem 0;
+      padding: 6rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: rotate 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      color: white;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
       background: rgba(255, 255, 255, 0.15);
     }
-    .pager {
-      position: absolute;
-      right: 28px;
-      bottom: 18px;
-      color: var(--muted);
-      font-size: 14px;
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .card-description {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+    }
+
+    /* Stats Section */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: rgba(255, 255, 255, 0.8);
       font-weight: 500;
     }
-    @media (max-width: 720px) {
-      .deck { height: 90vh; padding: 16px; }
-      .slide { padding: 20px; }
-      h1 { font-size: 28px; }
-      h2 { font-size: 22px; }
-      p, ul { font-size: 16px; }
-      img { max-height: 200px; }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      margin: 3rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--primary), var(--secondary));
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin: 3rem 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .timeline-content {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 2rem;
+      color: white;
+      width: 45%;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-left: auto;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+    }
+
+    /* Contact Section */
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .contact-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-link {
+      color: rgba(255, 255, 255, 0.8);
+      transition: color 0.3s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--accent);
+    }
+
+    /* Footer */
+    .footer {
+      background: rgba(15, 23, 42, 0.9);
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem 1.5rem;
+      }
+      
+      .nav-menu {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .section {
+        padding: 4rem 1.5rem;
+      }
+      
+      .timeline::before {
+        left: 30px;
+      }
+      
+      .timeline-content {
+        width: calc(100% - 80px);
+        margin-left: 80px !important;
+      }
+      
+      .timeline-dot {
+        left: 30px;
+      }
+    }
+
+    /* Scroll Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.6s ease;
+    }
+
+    .slide-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 0.6s ease;
+    }
+
+    .slide-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 2rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+      
+      .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
     }
   </style>
+  <script>
+    // Smooth scrolling function
+    function scrollToSection(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    function scrollToContact() {
+      document.getElementById('contact').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+
+      // Close menu when clicking on links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+        });
+      });
+    });
+
+    // Animated counter for stats
+    function animateValue(element, start, end, duration) {
+      if (start === end) return;
+      const range = end - start;
+      const current = start;
+      const increment = end > start ? 1 : -1;
+      const stepTime = Math.abs(Math.floor(duration / range));
+      
+      const timer = setInterval(() => {
+        current += increment;
+        element.textContent = current;
+        if (current === end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    }
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          
+          // Animate stats when they come into view
+          if (entry.target.classList.contains('stat-card')) {
+            const statNumber = entry.target.querySelector('.stat-number');
+            const targetValue = parseInt(statNumber.dataset.target);
+            animateValue(statNumber, 0, targetValue, 2000);
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.addEventListener('DOMContentLoaded', () => {
+      const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .stat-card');
+      animatedElements.forEach(el => observer.observe(el));
+    });
+
+    // Create floating particles
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.animationDelay = Math.random() * 20 + 's';
+      particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
+      document.querySelector('.particles').appendChild(particle);
+      
+      // Remove particle after animation
+      setTimeout(() => {
+        particle.remove();
+      }, 30000);
+    }
+
+    // Generate particles
+    document.addEventListener('DOMContentLoaded', () => {
+      // Create initial particles
+      for (let i = 0; i < 50; i++) {
+        setTimeout(createParticle, Math.random() * 10000);
+      }
+      
+      // Continue creating particles
+      setInterval(createParticle, 500);
+    });
+
+    // Smooth scroll for all anchor links
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
 </head>
 <body>
-  <div class="deck" id="deck">
+  <!-- Animated Background -->
+  <div class="bg-animation"></div>
+  
+  <!-- Floating Particles -->
+  <div class="particles"></div>
 
-    <!-- Slide 1 -->
-    <section class="slide active">
-      <h1>Phylum Coelenterata (Cnidaria)</h1>
-      <h2>Introduction</h2>
-      <ul>
-        <li>Aquatic animals, mostly marine; some freshwater (e.g., Hydra)</li>
-        <li><b>Diploblastic</b> → body made of two layers</li>
-        <li><b>Radial symmetry</b> → parts arranged around central axis</li>
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo">Kumar Pokharel</div>
+      <button class="menu-toggle">☰</button>
+      <ul class="nav-menu">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#vision" class="nav-link">Vision</a></li>
+        <li><a href="#initiatives" class="nav-link">Initiatives</a></li>
+        <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li><button class="contact-btn" onclick="scrollToContact()">Connect</button></li>
       </ul>
-      <img src="../images/cnidaria-intro.jpg" alt="Cnidarians: corals, jellyfish, and hydra" length="400" width="400">
-    </section>
+    </nav>
+  </header>
 
-    <!-- Slide 2 -->
-    <section class="slide">
-      <h2>Body Structure</h2>
-      <ul>
-        <li>Body wall: Epidermis (outer), Gastrodermis (inner), Mesoglea (jelly layer)</li>
-        <li>Single cavity: <b>Coelenteron</b> (gastrovascular cavity)</li>
-        <li>Mouth is the only opening (functions as mouth + anus)</li>
-        <li>Tentacles around mouth help in locomotion & food capture</li>
-      </ul>
-      <img src="../images/cnidaria-body.png" alt="Body structure of Hydra and Jellyfish">
-    </section>
-
-    <!-- Slide 3 -->
-    <section class="slide">
-      <h2>Specialized Cells</h2>
-      <ul>
-        <li><b>Cnidocytes</b> → stinging cells with nematocysts (defense & prey capture)</li>
-        <li>Nerve cells → simple nerve net</li>
-        <li>Epitheliomuscular cells → contraction & movement</li>
-        <li>Interstitial cells → regeneration</li>
-      </ul>
-      <img src="../images/cnidaria-cells.jpg" alt="Microscopic view of cnidocytes and cells">
-    </section>
-
-    <!-- Slide 4 -->
-    <section class="slide">
-      <h2>Key Features</h2>
-      <ul>
-        <li>Tissue-level organization, no true organs</li>
-        <li>Two body forms:
-          <ul>
-            <li><b>Polyp</b> → sessile, cylindrical (Hydra, Corals)</li>
-            <li><b>Medusa</b> → umbrella-shaped, free-swimming (Jellyfish)</li>
-          </ul>
-        </li>
-        <li>Incomplete alimentary canal</li>
-        <li>Respiration through body surface</li>
-      </ul>
-      <img src="../images/polyp-medusa.png" alt="Comparison of polyp and medusa forms">
-    </section>
-
-    <!-- Slide 5 -->
-    <section class="slide">
-      <h2>Subphyla</h2>
-      <ul>
-        <li><b>Anthozoa</b> → only polyp stage (Corals, Sea anemones)</li>
-        <li><b>Medusozoa</b> → polyp + medusa stages (Hydra, Obelia, Aurelia, Box jellyfish)</li>
-      </ul>
-      <img src="../images/cnidaria-subphyla.jpg" alt="Examples of Anthozoa and Medusozoa">
-    </section>
-
-    <!-- Slide 6 -->
-    <section class="slide">
-      <h2>Classes</h2>
-      <ul>
-        <li><b>Hydrozoa</b> → Hydra, Obelia (polyp + medusa)</li>
-        <li><b>Scyphozoa</b> → True jellyfish (Aurelia), medusa dominant</li>
-        <li><b>Anthozoa</b> → Corals, Sea anemones (polyp only)</li>
-        <li><b>Cubozoa</b> → Box jellyfish, cube-shaped, highly venomous</li>
-      </ul>
-      <img src="../images/cnidaria-classes.jpg" alt="Different classes of Cnidaria" width="500">
-    </section>
-
-    <!-- Slide 7 -->
-    <section class="slide">
-      <h2>Reproduction</h2>
-      <ul>
-        <li><b>Asexual</b> → budding, regeneration (Hydra, Corals)</li>
-        <li><b>Sexual</b> → gametes → planula larva → polyp</li>
-        <li>Alternation of generations: Polyp ↔ Medusa</li>
-      </ul>
-      <img src="../images/cnidaria-reproduction.png" alt="Life cycle of Obelia with alternation of generations">
-    </section>
-
-    <!-- Slide 8 -->
-    <section class="slide">
-      <h2>Importance</h2>
-      <ul>
-        <li>Coral reefs → biodiversity, coastal protection, tourism</li>
-        <li>Food chain → eaten by fishes, turtles</li>
-        <li>Jellyfish stings can be harmful</li>
-        <li>Corals → ecological and aesthetic value</li>
-      </ul>
-      <img src="../images/coral-reef.jpg" alt="Coral reef ecosystem full of marine life">
-    </section>
-
-    <!-- Slide 9 -->
-    <section class="slide">
-      <h2>Presented by</h2>
-      <p><b>Bigyan Pokharel</b> (Underscoore)</p>
-    </section>
-
-    <!-- Controls -->
-    <div class="controls">
-      <button class="icon" onclick="prev()">◀ Prev</button>
-      <a href="/" style="text-decoration: none;"><button class="icon">← Back</button></a>
-      <button class="icon" onclick="next()">Next ▶</button>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-subtitle">Visionary Leader & Entrepreneur</p>
+      <h1 class="hero-title">Transforming Tomorrow</h1>
+      <p class="hero-description typewriter">Businessman • Politician • Innovator • Community Builder</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="scrollToSection('vision')">Explore Vision</button>
+        <button class="btn btn-outline" onclick="scrollToContact()">Get In Touch</button>
+      </div>
     </div>
-    <div class="pager" id="pager">1 / 9</div>
-  </div>
+  </section>
 
-  <script src="../web/script4.js"></script>
-</body>
-</html>
+  <!-- About Section -->
+  <section id="about" class="glass-section fade-in">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">
+          A passionate leader dedicated to creating meaningful change through innovation, strategic thinking, and unwavering commitment to community development.
+        </p>
+      </div>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" data-target="15">0</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="50">0</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="1000">0</div>
+          <div class="stat-label">Jobs Created</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="25">0</div>
+          <div class="stat-label">Awards Received</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision Section -->
+  <section id="vision" class="glass-section fade-in">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Vision & Mission</h2>
+        <p class="section-subtitle">
+          Building a future where innovation meets compassion, creating sustainable opportunities for every member of our society.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card slide-in-left">
+          <div class="card-icon">🚀</div>
+          <h3 class="card-title">Innovation First</h3>
+          <p class="card-description">
+            Leveraging cutting-edge technology and forward-thinking strategies to solve tomorrow's challenges today.
+          </p>
+        </div>
+        
+        <div class="card fade-in">
+          <div class="card-icon">🤝</div>
+          <h3 class="card-title">Community Focus</h3>
+          <p class="card-description">
+            Placing communities at the heart of every decision, ensuring inclusive growth and shared prosperity.
+          </p>
+        </div>
+        
+        <div class="card slide-in-right">
+          <div class="card-icon">🌱</div>
+          <h3 class="card-title">Sustainable Growth</h3>
+          <p class="card-description">
+            Creating long-term value while protecting our environment for future generations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Initiatives Section -->
+  <section id="initiatives" class="glass-section fade-in">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Key Initiatives</h2>
+        <p class="section-subtitle">
+          Strategic programs designed to create lasting impact across business, technology, and community development.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">📈</div>
+          <h3 class="card-title">Economic Development</h3>
+          <p class="card-description">
+            Established multiple successful enterprises generating over $50M in revenue and creating sustainable employment opportunities across diverse sectors.
+          </p>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">🎓</div>
+          <h3 class="card-title">Education & Skills</h3>
+          <p class="card-description">
+            Launched comprehensive training programs reaching 5,000+ individuals, focusing on digital literacy and entrepreneurship development.
+          </p>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">💡</div>
+          <h3 class="card-title">Innovation Hub</h3>
+          <p class="card-description">
+            Created state-of-the-art incubation centers supporting 200+ startups with mentorship, funding, and resource access.
+          </p>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">🏥</div>
+          <h3 class="card-title">Healthcare Access</h3>
+          <p class="card-description">
+            Improved healthcare infrastructure serving 100,000+ people through modern facilities and telemedicine programs.
+          </p>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">🌍</div>
+          <h3 class="card-title">Environmental Impact</h3>
+          <p class="card-description">
+            Implemented green initiatives reducing carbon footprint by 40% while promoting renewable energy adoption.
+          </p>
+        </div>
+        
+        <div class="card">
+          <div class="card-icon">⚖️</div>
+          <h3 class="card-title">Policy Reform</h3>
+          <p class="card-description">
+            Championed legislative changes improving business climate and social welfare policies benefiting millions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Timeline -->
+  <section id="achievements" class="glass-section fade-in">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Major Achievements</h2>
+        <p class="section-subtitle">
+          A journey of continuous growth, impactful leadership, and meaningful contributions to society.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content slide-in-left">
+            <h3>🏆 Global Leadership Award</h3>
+            <p><strong>2024:</strong> Recognized as "Global Business Leader of the Year" by the International Chamber of Commerce for exceptional contributions to sustainable business practices.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content slide-in-right">
+            <h3>🌐 International Expansion</h3>
+            <p><strong>2023:</strong> Successfully expanded business operations to 15 countries, creating 10,000+ jobs and establishing strategic partnerships worldwide.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content slide-in-left">
+            <h3>🏛️ Parliamentary Service</h3>
+            <p><strong>2020-2024:</strong> Served as Member of Parliament, leading key committees on economic development and digital transformation initiatives.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content slide-in-right">
+            <h3>💼 Unicorn Startup</h3>
+            <p><strong>2019:</strong> Co-founded and scaled a tech startup to unicorn status ($1B+ valuation), revolutionizing the fintech industry in emerging markets.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content slide-in-left">
+            <h3>📚 Educational Foundation</h3>
+            <p><strong>2018:</strong> Established scholarship foundation providing education opportunities to 1,000+ underprivileged students, focusing on STEM and leadership development.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="glass-section fade-in">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-subtitle">
+          Ready to collaborate on transformative projects? Let's discuss how we can create meaningful impact together.
+        </p>
+      </div>
+      
+      <div class="contact-info">
+        <div class="contact-card">
+          <div class="contact-icon">📧</div>
+          <div class="contact-title">Email</div>
+          <a href="mailto:alexander.kane@leadership.com" class="contact-link">
+            contact@kumarpokharel.com.np
+          </a>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon">📱</div>
+          <div class="contact-title">Phone</div>
+          <a href="tel:+977-9876543210" class="contact-link">
+            +977-9855068294
+          </a>
+        </div>
+        
+        <!-- <div class="contact-card">
+          <div class="contact-icon">💼</div>
+          <div class="contact-title">LinkedIn</div>
+          <a href="https://linkedin.com/in/alexanderkane" class="contact-link" target="_blank">
+            /in/alexanderkane
+          </a>
+        </div> -->
+        
+        <!-- <div class="contact-card">
+          <div class="contact-icon">🐦</div>
+          <div class="contact-title">Twitter</div>
+          <a href="https://twitter.com/alexkane_leader" class="contact-link" target="_blank">
+            @alexkane_leader
+          </a>
+        </div>
+      </div> -->
+
+       <div class="contact-card">
+          <div class="contact-icon">🐦</div>
+          <div class="contact-title">Facebook</div>
+          <a href="https://www.facebook.com/kumarpokharel039" class="contact-link" target="_blank">
+            Kumar Pokharel
+          </a>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <button class="btn btn-primary" onclick="location.href='mailto:contact@kumarpokharel.com.np'">
+          Start a Conversation
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Kumar Pokharel. Transforming Tomorrow, Today.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">
+        Building a better future through innovation, leadership, and community impact.
+      </p>
+    </div>
+  </footer>
